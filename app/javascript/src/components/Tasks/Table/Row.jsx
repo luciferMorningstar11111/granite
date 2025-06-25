@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 import { Tooltip } from "components/commons";
 
-const Row = ({ data }) => (
+const Row = ({ data, showTask }) => (
+
   <tbody className="divide-y divide-gray-200 bg-white">
     {data.map(rowData => (
       <tr key={rowData.id}>
@@ -12,6 +13,11 @@ const Row = ({ data }) => (
           <Tooltip tooltipContent={rowData.title}>
             <span>{rowData.title}</span>
           </Tooltip>
+        </td>
+                <td className="px-6 py-4 text-sm font-medium leading-5 text-right cursor-pointer">
+          <a className="text-indigo-600" onClick={() => showTask(rowData.slug)}>
+            Show
+          </a>
         </td>
       </tr>
     ))}

@@ -10,6 +10,11 @@ class TasksController < ApplicationController
    render_notice(t("successfully_created"))
   end
 
+  def show
+    task = Task.find_by!(slug: params[:slug])
+    render_json({ task: task })
+  end
+
   private
 
     def task_params
