@@ -3,6 +3,7 @@ import { Container, PageTitle } from "components/commons";
 import Form from "./Form";
 import tasksApi from "apis/tasks";
 
+
 const Create = ({ history }) => {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
@@ -11,11 +12,14 @@ const Create = ({ history }) => {
     event.preventDefault();
     setLoading(true);
     try {
-      await tasksApi.create({ task: { title } });
+    //   await tasksApi.create({ task: { title } });
+    await tasksApi.create({ title });
+
       setLoading(false);
       history.push("/dashboard");
     } catch (error) {
-      logger.error(error);
+    //   logger.error(error);
+    console.log(error);
       setLoading(false);
     }
   };
