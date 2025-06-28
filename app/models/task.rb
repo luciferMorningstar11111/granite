@@ -7,11 +7,19 @@ class Task < ApplicationRecord
     length: { maximum: MAX_TITLE_LENGTH },
     format: { with: VALID_TITLE_REGEX }
     validates :slug, uniqueness: true
-      validate :slug_not_changed
+    validate :slug_not_changed
 
-      before_create :set_slug
+    before_create :set_slug
 
       private
+
+    def set_title
+      self.title = "Pay electricity bill"
+    end
+
+    def change_title
+    self.title = "Pay electricity & TV bill"
+    end
 
 def set_slug
   title_slug = title.parameterize
