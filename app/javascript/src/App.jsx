@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 import { CreateTask, ShowTask,EditTask } from "components/Tasks";
 import Dashboard from "components/Dashboard";
+import Signup from "components/Authentication/Signup";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route exact path="/tasks/:slug/show" component={ShowTask} />
         <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </Router>
   );
