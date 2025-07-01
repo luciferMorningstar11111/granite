@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom";
-
 import tasksApi from "apis/tasks";
 import usersApi from "apis/users";
 import { Container, PageLoader, PageTitle } from "components/commons";
+import { useParams } from "react-router-dom";
 
 import Form from "./Form";
 
@@ -84,7 +83,6 @@ const Edit = ({ history }) => {
           handleSubmit={handleSubmit}
           loading={loading}
           setTitle={setTitle}
-          userId={userId}
           setUserId={setUserId}
           title={title}
           users={users}
