@@ -1,21 +1,34 @@
 import React from "react";
+
+import { either, isEmpty, isNil } from "ramda";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import { CreateTask, ShowTask,EditTask } from "components/Tasks";
+import { Login, Signup } from "components/Authentication";
+import { PrivateRoute } from "components/commons";
 import Dashboard from "components/Dashboard";
-import Signup from "components/Authentication/Signup";
+import { CreateTask, EditTask, ShowTask } from "components/Tasks";
+import { getFromLocalStorage } from "utils/storage";
 
 const App = () => {
+  const authToken = getFromLocalStorage("authToken");
+  const isLoggedIn = !either(isNil, isEmpty)(authToken);
+
   return (
     <Router>
       <ToastContainer />
       <Switch>
-        <Route exact path="/tasks/:slug/edit" component={EditTask} />
-        <Route exact path="/tasks/:slug/show" component={ShowTask} />
-        <Route exact path="/tasks/create" component={CreateTask} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/signup" component={Signup} />
+        <Route exact component={ShowTask} path="/tasks/:slug/show" />
+        <Route exact component={EditTask} path="/tasks/:slug/edit" />
+        <Route exact component={CreateTask} path="/tasks/create" />
+        <Route exact component={Signup} path="/signup" />
+        <Route exact component={Login} path="/login" />
+        <PrivateRoute
+          component={Dashboard}
+          condition={isLoggedIn}
+          path="/"
+          redirectRoute="/login"
+        />
       </Switch>
     </Router>
   );
