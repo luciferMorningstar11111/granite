@@ -5,11 +5,11 @@ class TasksController < ApplicationController
     render_json({ tasks: })
   end
 
-  def create
-  task = Task.new(task_params)
-  task.save!
+ def create
+    task = current_user.created_tasks.new(task_params)
+    task.save!
     render_notice(t("successfully_created", entity: "Task"))
-  end
+ end
 
   def show
     render
