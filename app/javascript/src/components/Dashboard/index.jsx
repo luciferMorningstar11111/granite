@@ -17,7 +17,7 @@ const Dashboard = ({ history }) => {
       } = await tasksApi.fetch();
       setTasks(tasks);
     } catch (error) {
-      logger.error(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
