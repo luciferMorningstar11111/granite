@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
  before_destroy :assign_tasks_to_task_owners
+   has_many :comments, dependent: :destroy
   has_many :created_tasks, foreign_key: :task_owner_id, class_name: "Task"
   MAX_NAME_LENGTH = 255
   MIN_PASSWORD_LENGTH = 6

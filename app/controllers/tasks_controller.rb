@@ -17,9 +17,10 @@ class TasksController < ApplicationController
     render_notice(t("successfully_created", entity: "Task"))
   end
 
-  def show
-    authorize @task
-  end
+def show
+  authorize @task
+  @comments = @task.comments.order('created_at DESC')
+end
 
   def update
     authorize @task

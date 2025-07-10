@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+has_many :comments, dependent: :destroy
   MAX_TITLE_LENGTH = 125
   VALID_TITLE_REGEX = /\A.*[a-zA-Z0-9].*\z/i
   belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
