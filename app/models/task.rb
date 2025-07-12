@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+enum :status, { unstarred: "unstarred", starred: "starred" }, default: :unstarred
 RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
 enum :progress, { pending: "pending", completed: "completed" }, default: :pending
 has_many :comments, dependent: :destroy
@@ -17,6 +18,14 @@ has_many :comments, dependent: :destroy
     before_create :set_slug
 
       private
+    
+      def self.of_status(progress)
+        if progress == :pending
+          pending.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+        else
+          completed.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+        end
+      end
 
     def set_title
       self.title = "Pay electricity bill"

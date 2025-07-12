@@ -5,11 +5,11 @@ class TasksController < ApplicationController
   before_action :load_task!, only: %i[show update destroy]
     before_action :ensure_authorized_update_to_restricted_attrs, only: :update
 
-  def index
-  tasks = policy_scope(Task)
-  @pending_tasks = tasks.pending.includes(:assigned_user)
-  @completed_tasks = tasks.completed
-  end
+    def index
+      tasks = policy_scope(Task)
+      @pending_tasks = tasks.pending.includes(:assigned_user)
+      @completed_tasks = tasks.completed
+    end
 
   def create
     task = current_user.created_tasks.new(task_params)
@@ -38,7 +38,7 @@ end
   private
 
     def task_params
-       params.require(:task).permit(:title, :assigned_user_id, :progress)
+      params.require(:task).permit(:title, :assigned_user_id, :progress, :status)
     end
 
     def ensure_authorized_update_to_restricted_attrs
