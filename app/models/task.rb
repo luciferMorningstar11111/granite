@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+RESTRICTED_ATTRIBUTES = %i[title task_owner_id assigned_user_id]
+enum :progress, { pending: "pending", completed: "completed" }, default: :pending
 has_many :comments, dependent: :destroy
   MAX_TITLE_LENGTH = 125
   VALID_TITLE_REGEX = /\A.*[a-zA-Z0-9].*\z/i

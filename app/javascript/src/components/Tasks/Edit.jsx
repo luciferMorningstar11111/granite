@@ -16,20 +16,20 @@ const Edit = ({ history }) => {
   const [pageLoading, setPageLoading] = useState(true);
   const { slug } = useParams();
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-    try {
-      await tasksApi.update({
-        slug,
-        payload: { title, assigned_user_id: userId },
-      });
-      setLoading(false);
-      history.push("/dashboard");
-    } catch (error) {
-      setLoading(false);
-      logger.error(error);
-    }
-  };
+const handleSubmit = async event => {
+  event.preventDefault();
+  try {
+    await tasksApi.update({
+      slug,
+      payload: { title, assigned_user_id: userId },
+    });
+    setLoading(false);
+    history.push("/");
+  } catch (error) {
+    setLoading(false);
+    logger.error(error);
+  }
+};
 
   const fetchUserDetails = async () => {
     try {
