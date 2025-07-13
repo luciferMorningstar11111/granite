@@ -32,3 +32,7 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
   end
 end
+
+# parallelize_setup do
+#   puts "New process is forked"
+# end
