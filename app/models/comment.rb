@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
 class Comment < ApplicationRecord
+  # Constants
   MAX_CONTENT_LENGTH = 511
-  belongs_to :task
-  belongs_to :user
+
+  # Associations
   belongs_to :task, counter_cache: true
+  belongs_to :user
+
+  # Validations
   validates :content, presence: true, length: { maximum: MAX_CONTENT_LENGTH }
 end
