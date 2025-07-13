@@ -17,13 +17,16 @@ has_many :comments, dependent: :destroy
 
     before_create :set_slug
 
+    # Scope to order tasks by priority (starred first, then by updated_at DESC)
+    scope :by_priority, -> { in_order_of(:status, %w(starred unstarred)).order("updated_at DESC") }
+
       private
     
       def self.of_status(progress)
         if progress == :pending
-          pending.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+          pending.by_priority
         else
-          completed.in_order_of(:status, %w(starred unstarred)).order("updated_at DESC")
+          completed.by_priority
         end
       end
 

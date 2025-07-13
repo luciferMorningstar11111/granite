@@ -7,8 +7,8 @@ class TasksController < ApplicationController
 
     def index
       tasks = policy_scope(Task)
-      @pending_tasks = tasks.pending.includes(:assigned_user)
-      @completed_tasks = tasks.completed
+      @pending_tasks = tasks.pending.includes(:assigned_user).by_priority
+      @completed_tasks = tasks.completed.by_priority
     end
 
   def create
