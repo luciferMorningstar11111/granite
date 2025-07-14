@@ -18,14 +18,16 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     response_json = response.parsed_body
     all_tasks = response_json['tasks']
 
-    expected_pending_tasks_ids = Task.where(progress: 'pending').pluck(:id).sort
-    expected_completed_tasks_ids = Task.where(progress: 'completed').pluck(:id).sort
+    assert_task_ids_match(:pending, all_tasks['pending'])
+    assert_task_ids_match(:completed, all_tasks['completed'])
+  end
 
-    actual_pending_tasks_ids = all_tasks['pending'].pluck('id').sort
-    actual_completed_tasks_ids = all_tasks['completed'].pluck('id').sort
+  private
 
-    assert_equal expected_pending_tasks_ids, actual_pending_tasks_ids
-    assert_equal expected_completed_tasks_ids, actual_completed_tasks_ids
+  def assert_task_ids_match(progress, actual_tasks)
+    expected_ids = Task.where(progress: progress.to_s).pluck(:id).sort
+    actual_ids = actual_tasks.pluck('id').sort
+    assert_equal expected_ids, actual_ids
   end
 
   def test_should_create_valid_task

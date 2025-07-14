@@ -1,3 +1,4 @@
+# Controller for managing tasks
 # frozen_string_literal: true
 
 class TasksController < ApplicationController

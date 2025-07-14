@@ -1,4 +1,4 @@
-# Helper methods for session management views.
+# Helper methods for session management
 # frozen_string_literal: true
 
 module SessionsHelper

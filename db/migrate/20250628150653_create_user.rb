@@ -1,4 +1,4 @@
-# Migration to create the users table.
+# Migration to create users table
 # frozen_string_literal: true
 
 class CreateUser < ActiveRecord::Migration[7.1]

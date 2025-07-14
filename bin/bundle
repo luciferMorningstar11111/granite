@@ -22,12 +22,16 @@ m = Module.new do
   end
 
   def cli_arg_version
-    return unless invoked_as_script? # don't want to hijack other binstubs
-    return unless 'update'.start_with?(ARGV.first || ' ') # must be running `bundle update`
+    return unless invoked_as_script?
+    return unless 'update'.start_with?(ARGV.first || ' ')
 
+    parse_bundler_version_from_argv(ARGV)
+  end
+
+  def parse_bundler_version_from_argv(argv)
     bundler_version = nil
     update_index = nil
-    ARGV.each_with_index do |a, i|
+    argv.each_with_index do |a, i|
       bundler_version = a if update_index && update_index.succ == i && a.match?(Gem::Version::ANCHORED_VERSION_PATTERN)
       next unless a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/
 
@@ -84,22 +88,15 @@ m = Module.new do
   end
 
   def activate_bundler
-    gem_error = activation_error_handling do
-      gem 'bundler', bundler_requirement
-    end
+    gem_error = activation_error_handling { gem 'bundler', bundler_requirement }
     return if gem_error.nil?
 
-    require_error = activation_error_handling do
-      require 'bundler/version'
-    end
+    require_error = activation_error_handling { require 'bundler/version' }
     if require_error.nil? && Gem::Requirement.new(bundler_requirement).satisfied_by?(Gem::Version.new(Bundler::VERSION))
       return
     end
 
-    warn "Activating bundler (#{bundler_requirement}) failed:\n" \
-      "#{gem_error.message}\n\n" \
-      "To install the version of bundler this project requires, " \
-      "run `gem install bundler -v '#{bundler_requirement}'`"
+    warn_bundler_activation_failure(gem_error)
     exit 42
   end
 
@@ -108,6 +105,13 @@ m = Module.new do
     nil
   rescue StandardError, LoadError => e
     e
+  end
+
+  def warn_bundler_activation_failure(gem_error)
+    warn "Activating bundler (#{bundler_requirement}) failed:\n" \
+         "#{gem_error.message}\n\n" \
+         'To install the version of bundler this project requires, ' \
+         "run `gem install bundler -v '#{bundler_requirement}'`"
   end
 end
 

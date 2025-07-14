@@ -1,4 +1,4 @@
-# Migration to seed slug values for existing tasks.
+# Migration to seed slug value for existing tasks
 # frozen_string_literal: true
 
 class SeedSlugValueForExistingTasks < ActiveRecord::Migration[7.1]

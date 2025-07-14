@@ -8,7 +8,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# Main application class for Granite.
+# Main application class for Granite
 module Granite
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

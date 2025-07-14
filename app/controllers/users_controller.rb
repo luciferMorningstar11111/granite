@@ -1,4 +1,4 @@
-# Controller for managing user-related actions.
+# Controller for managing users
 # frozen_string_literal: true
 
 class UsersController < ApplicationController

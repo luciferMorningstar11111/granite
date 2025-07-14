@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class TaskTest < ActiveSupport::TestCase
+class TaskValidationTest < ActiveSupport::TestCase
   def setup
     @user = create(:user)
     @task = create(:task, assigned_user: @user, task_owner: @user)
@@ -67,6 +67,13 @@ class TaskTest < ActiveSupport::TestCase
     @task.title = ''
     assert_not @task.valid?
   end
+end
+
+class TaskSlugTest < ActiveSupport::TestCase
+  def setup
+    @user = create(:user)
+    @task = create(:task, assigned_user: @user, task_owner: @user)
+  end
 
   def test_task_slug_is_parameterized_title
     title = @task.title
@@ -118,9 +125,6 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   def test_background_job_should_update_name
-    # This test seems to be testing a background job that updates user name
-    # Since background_job is not defined, we'll either need to define it or remove this test
-    # For now, let's skip this test as it requires additional setup
     skip 'Background job test requires proper setup'
   end
 
@@ -178,6 +182,3 @@ class TaskTest < ActiveSupport::TestCase
     assert_equal substring_of_existing_slug.parameterize, new_task.slug
   end
 end
-
-# TODO: This test class exceeds the recommended length. Consider splitting into multiple test classes.
-# TODO: This test method is complex due to multiple setup and assertions. Consider refactoring for clarity.

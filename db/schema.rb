@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Do not edit directly.
 #
 # This file is the source Rails uses to define your schema when running `bin/rails

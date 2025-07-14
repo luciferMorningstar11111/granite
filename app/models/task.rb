@@ -1,4 +1,4 @@
-# Model representing a task in the system.
+# Model representing a task
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
@@ -44,19 +44,24 @@ class Task < ApplicationRecord
 
   def set_slug
     title_slug = title.parameterize
+    latest_task_slug = find_latest_task_slug(title_slug)
+    slug_count = extract_slug_count(latest_task_slug)
+    self.slug = slug_count.positive? ? "#{title_slug}-#{slug_count + 1}" : title_slug
+  end
+
+  def find_latest_task_slug(title_slug)
     regex_pattern = "slug #{Constants::DB_REGEX_OPERATOR} ?"
-    latest_task_slug = Task.where(
+    Task.where(
       regex_pattern,
       "^#{title_slug}$|^#{title_slug}-[0-9]+$"
     ).order('LENGTH(slug) DESC', slug: :desc).first&.slug
+  end
 
-    slug_count = 0
-    if latest_task_slug.present?
-      slug_count = latest_task_slug.split('-').last.to_i
-      slug_count = 1 if slug_count.zero?
-    end
+  def extract_slug_count(latest_task_slug)
+    return 0 unless latest_task_slug.present?
 
-    self.slug = slug_count.positive? ? "#{title_slug}-#{slug_count + 1}" : title_slug
+    slug_count = latest_task_slug.split('-').last.to_i
+    slug_count.zero? ? 1 : slug_count
   end
 
   def slug_not_changed
