@@ -1,3 +1,4 @@
+# Migration to add a unique index for slug in tasks.
 # frozen_string_literal: true
 
 class AddUniqueIndexForSlug < ActiveRecord::Migration[7.1]

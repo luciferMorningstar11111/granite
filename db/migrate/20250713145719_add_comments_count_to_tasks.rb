@@ -1,3 +1,4 @@
+# Migration to add comments_count to tasks.
 # frozen_string_literal: true
 
 class AddCommentsCountToTasks < ActiveRecord::Migration[7.1]

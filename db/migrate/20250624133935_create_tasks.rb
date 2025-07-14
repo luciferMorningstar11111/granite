@@ -1,3 +1,4 @@
+# Migration to create the tasks table.
 # frozen_string_literal: true
 
 class CreateTasks < ActiveRecord::Migration[7.1]

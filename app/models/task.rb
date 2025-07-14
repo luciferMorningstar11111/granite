@@ -1,3 +1,4 @@
+# Model representing a task in the system.
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
@@ -38,6 +39,8 @@ class Task < ApplicationRecord
       completed.by_priority
     end
   end
+
+  private_class_method :of_status
 
   def set_slug
     title_slug = title.parameterize

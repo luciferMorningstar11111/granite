@@ -11,6 +11,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     @assignee_headers = headers(@assignee)
   end
 
+  # TODO: Refactor to reduce AbcSize. Current complexity is due to test setup and assertions.
   def test_should_list_all_tasks_for_valid_user
     get tasks_path, headers: @creator_headers
     assert_response :success

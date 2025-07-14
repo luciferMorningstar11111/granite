@@ -1,3 +1,4 @@
+# Migration to make the title column not nullable in tasks.
 # frozen_string_literal: true
 
 class MakeTitleNotNullable < ActiveRecord::Migration[7.1]

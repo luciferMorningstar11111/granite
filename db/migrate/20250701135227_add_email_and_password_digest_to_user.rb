@@ -1,3 +1,4 @@
+# Migration to add email and password_digest to users.
 # frozen_string_literal: true
 
 class AddEmailAndPasswordDigestToUser < ActiveRecord::Migration[7.1]

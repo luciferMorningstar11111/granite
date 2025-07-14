@@ -1,3 +1,4 @@
+# Migration to add a foreign key to tasks.
 # frozen_string_literal: true
 
 class AddForeignKeyToTask < ActiveRecord::Migration[7.1]

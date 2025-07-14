@@ -1,3 +1,4 @@
+# Migration to make slug not nullable in tasks.
 # frozen_string_literal: true
 
 class MakeSlugNotNullable < ActiveRecord::Migration[7.1]

@@ -1,3 +1,4 @@
+# Migration to add status to tasks.
 # frozen_string_literal: true
 
 class AddStatusToTasks < ActiveRecord::Migration[7.1]

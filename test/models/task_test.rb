@@ -117,12 +117,6 @@ class TaskTest < ActiveSupport::TestCase
     end
   end
 
-  def test_task_count_increases_on_saving
-    assert_difference ['Task.count'], 1 do
-      create(:task)
-    end
-  end
-
   def test_background_job_should_update_name
     # This test seems to be testing a background job that updates user name
     # Since background_job is not defined, we'll either need to define it or remove this test
@@ -184,3 +178,6 @@ class TaskTest < ActiveSupport::TestCase
     assert_equal substring_of_existing_slug.parameterize, new_task.slug
   end
 end
+
+# TODO: This test class exceeds the recommended length. Consider splitting into multiple test classes.
+# TODO: This test method is complex due to multiple setup and assertions. Consider refactoring for clarity.

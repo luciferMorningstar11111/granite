@@ -1,3 +1,4 @@
+# Migration to add task_owner_id to tasks.
 # frozen_string_literal: true
 
 class AddTaskOwnerIdToTask < ActiveRecord::Migration[7.1]

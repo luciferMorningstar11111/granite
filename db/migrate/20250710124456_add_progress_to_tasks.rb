@@ -1,3 +1,4 @@
+# Migration to add progress to tasks.
 # frozen_string_literal: true
 
 class AddProgressToTasks < ActiveRecord::Migration[7.1]

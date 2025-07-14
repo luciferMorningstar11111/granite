@@ -1,3 +1,4 @@
+# Base model class for all ActiveRecord models.
 # frozen_string_literal: true
 
 class ApplicationRecord < ActiveRecord::Base

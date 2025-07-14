@@ -1,3 +1,4 @@
+# Migration to add slug to tasks.
 # frozen_string_literal: true
 
 class AddSlugToTask < ActiveRecord::Migration[7.1]

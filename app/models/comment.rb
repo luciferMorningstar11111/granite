@@ -1,3 +1,4 @@
+# Model representing a comment on a task or entity.
 # frozen_string_literal: true
 
 class Comment < ApplicationRecord

@@ -1,3 +1,4 @@
+# Model representing a user in the system.
 # frozen_string_literal: true
 
 class User < ApplicationRecord

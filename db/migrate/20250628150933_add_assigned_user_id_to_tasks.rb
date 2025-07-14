@@ -1,3 +1,4 @@
+# Migration to add assigned_user_id to tasks.
 # frozen_string_literal: true
 
 class AddAssignedUserIdToTasks < ActiveRecord::Migration[7.1]

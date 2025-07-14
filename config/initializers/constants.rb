@@ -1,3 +1,4 @@
+# Module for application-wide constants.
 # frozen_string_literal: true
 
 module Constants

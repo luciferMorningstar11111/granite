@@ -1,3 +1,4 @@
+# Migration to add authentication_token to users.
 # frozen_string_literal: true
 
 class AddAuthenticationTokenToUsers < ActiveRecord::Migration[7.1]

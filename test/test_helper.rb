@@ -14,6 +14,7 @@ def enable_test_coverage
   end
 end
 
+# TODO: This method is longer than recommended. Consider refactoring if possible.
 enable_test_coverage if ENV['COVERAGE']
 
 ENV['RAILS_ENV'] ||= 'test'

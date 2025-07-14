@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Policy class for task authorization.
 class TaskPolicy
   attr_reader :user, :task
 
@@ -37,6 +38,7 @@ class TaskPolicy
     task.task_owner_id == user.id
   end
 
+  # Scope for task policy.
   class Scope
     attr_reader :user, :scope
 
