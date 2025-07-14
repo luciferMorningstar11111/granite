@@ -2,11 +2,16 @@
   "name": "app",
   "private": true,
   "devDependencies": {
-    "esbuild": "^0.25.5"
+    "esbuild": "^0.25.5",
+    "eslint": "^9.31.0",
+    "prettier": "^3.6.2"
   },
   "scripts": {
     "build": "node esbuild.config.js",
-    "dev": "vite"
+    "dev": "vite",
+    "lint": "eslint \"./app/javascript/src/**/*.{js,jsx,json}\"",
+    "format": "prettier --check \"./app/javascript/src/**/*.{js,jsx,json}\"",
+    "format:fix": "prettier --write \"./app/javascript/src/**/*.{js,jsx,json}\""
   },
   "dependencies": {
     "@babel/core": "^7.19.1",
@@ -38,11 +43,11 @@
     "prop-types": "^15.8.1",
     "ramda": "0.29.0",
     "react": "^18.2.0",
+    "react_ujs": "3.1.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "5.3.0",
     "react-select": "5.7.4",
     "react-toastify": "8.0.2",
-    "react_ujs": "3.1.1",
     "remixicon": "^4.6.0",
     "sass": "^1.59.3",
     "stream-browserify": "^3.0.0",
