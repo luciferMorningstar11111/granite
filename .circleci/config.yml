@@ -30,9 +30,9 @@ jobs:
       #install sqlite dependency
       - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
       # Bundle install
-- run: |
-    bundle config set path 'vendor/bundle'
-    bundle check || bundle install --jobs=4 --retry=3
+      - run: |
+          bundle config set path 'vendor/bundle'
+          bundle check || bundle install --jobs=4 --retry=3
 
       # Yarn install
       - run: yarn install --cache-folder vendor/node_modules
