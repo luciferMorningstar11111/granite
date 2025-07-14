@@ -16,7 +16,7 @@ const Button = ({
   icon,
   disabled = false,
 }) => {
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (!(disabled || loading)) return onClick(e);
 
     return null;
@@ -39,7 +39,7 @@ const Button = ({
           "bg-gray-300 text-gray-800": loading,
           "cursor-wait": loading,
           "cursor-not-allowed opacity-50": disabled,
-        }
+        },
       )}
       onClick={handleClick}
     >

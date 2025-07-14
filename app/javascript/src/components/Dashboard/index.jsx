@@ -40,7 +40,7 @@ const Dashboard = ({ history }) => {
     }
   };
 
-  const destroyTask = async slug => {
+  const destroyTask = async (slug) => {
     try {
       await tasksApi.destroy({ slug, quiet: true });
       await fetchTasks();
@@ -49,7 +49,7 @@ const Dashboard = ({ history }) => {
     }
   };
 
-  const showTask = slug => {
+  const showTask = (slug) => {
     history.push(`/tasks/${slug}/show`);
   };
 

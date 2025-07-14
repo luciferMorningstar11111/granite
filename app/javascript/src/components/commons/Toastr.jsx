@@ -11,13 +11,13 @@ const ToastrComponent = ({ message }) => {
   );
 };
 
-const showToastr = message => {
+const showToastr = (message) => {
   toast.success(<ToastrComponent message={message} />, TOASTR_OPTIONS);
 };
 
-const isError = e => e && e.stack && e.message;
+const isError = (e) => e && e.stack && e.message;
 
-const showErrorToastr = error => {
+const showErrorToastr = (error) => {
   const errorMessage = isError(error) ? error.message : error;
   toast.error(<ToastrComponent message={errorMessage} />, TOASTR_OPTIONS);
 };

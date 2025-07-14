@@ -4,9 +4,9 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const entryPoint = file => path.join(process.cwd(), file);
+const entryPoint = (file) => path.join(process.cwd(), file);
 
-const absolutePath = basePath =>
+const absolutePath = (basePath) =>
   path.resolve(__dirname, "..", "..", `app/javascript/${basePath}`);
 
 const define = {

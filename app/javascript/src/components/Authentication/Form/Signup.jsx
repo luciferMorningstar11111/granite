@@ -37,25 +37,25 @@ const Signup = ({
         <Input
           label="Name"
           placeholder="Oliver"
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
         <Input
           label="Email"
           placeholder="oliver@example.com"
           type="email"
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           label="Password"
           placeholder="********"
           type="password"
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Input
           label="Password Confirmation"
           placeholder="********"
           type="password"
-          onChange={e => setPasswordConfirmation(e.target.value)}
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
         <Button buttonText="Register" loading={loading} type="submit" />
       </form>

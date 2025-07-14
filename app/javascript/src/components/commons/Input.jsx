@@ -28,7 +28,7 @@ const Input = ({
         value={value}
         className={classnames(
           "focus:outline-none focus:shadow-outline-blue block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 transition duration-150 ease-in-out focus:border-blue-300 sm:text-sm sm:leading-5",
-          [className]
+          [className],
         )}
         onChange={onChange}
       />

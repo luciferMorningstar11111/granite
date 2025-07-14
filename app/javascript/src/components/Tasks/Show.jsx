@@ -41,7 +41,7 @@ const Show = () => {
     }
   };
 
-  const addComment = async event => {
+  const addComment = async (event) => {
     event.preventDefault();
     setLoading(true);
     try {

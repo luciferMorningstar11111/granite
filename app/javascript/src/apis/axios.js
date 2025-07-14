@@ -22,7 +22,7 @@ const setAuthHeaders = () => {
   }
 };
 
-const handleSuccessResponse = response => {
+const handleSuccessResponse = (response) => {
   if (response) {
     response.success = response.status === 200;
     if (response.data.notice) {
@@ -32,13 +32,13 @@ const handleSuccessResponse = response => {
   return response;
 };
 
-const handleErrorResponse = axiosErrorObject => {
+const handleErrorResponse = (axiosErrorObject) => {
   if (axiosErrorObject.response?.status === 401) {
     setToLocalStorage({ authToken: null, email: null, userId: null });
     setTimeout(() => (window.location.href = "/"), 2000);
   }
   Toastr.error(
-    axiosErrorObject.response?.data?.error || DEFAULT_ERROR_NOTIFICATION
+    axiosErrorObject.response?.data?.error || DEFAULT_ERROR_NOTIFICATION,
   );
   if (axiosErrorObject.response?.status === 423) {
     window.location.href = "/";
@@ -47,8 +47,8 @@ const handleErrorResponse = axiosErrorObject => {
 };
 
 const registerIntercepts = () => {
-  axios.interceptors.response.use(handleSuccessResponse, error =>
-    handleErrorResponse(error)
+  axios.interceptors.response.use(handleSuccessResponse, (error) =>
+    handleErrorResponse(error),
   );
 };
 

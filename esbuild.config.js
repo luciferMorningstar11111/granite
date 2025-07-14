@@ -41,13 +41,13 @@ const defaultConfigurations = {
   plugins: [
     svgPlugin(),
     sassPlugin({
-      transform: async source => {
+      transform: async (source) => {
         const { css } = await postcss(postCssConfig.plugins).process(source, {
           from: undefined,
         });
         return css;
       },
-      importMapper: filePath =>
+      importMapper: (filePath) =>
         filePath.replace("@bigbinary/neetoui", "@bigbinary/neetoui/dist"),
       logger: sass.Logger.silent,
     }),

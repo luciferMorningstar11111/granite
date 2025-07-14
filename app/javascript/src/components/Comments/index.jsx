@@ -20,7 +20,7 @@ const Comments = ({
           placeholder="Ask a question or post an update"
           rows={3}
           value={newComment}
-          onChange={e => setNewComment(e.target.value)}
+          onChange={(e) => setNewComment(e.target.value)}
         />
       </div>
       <Button buttonText="Comment" loading={loading} type="submit" />

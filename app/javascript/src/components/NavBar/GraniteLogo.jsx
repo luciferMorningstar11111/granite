@@ -1,6 +1,6 @@
 import React from "react";
 
-const GraniteLogo = props => (
+const GraniteLogo = (props) => (
   <svg
     fill="none"
     height="100"

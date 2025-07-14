@@ -16,7 +16,7 @@ const NavBar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleClickOutside = event => {
+    const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuVisible(false);
       }

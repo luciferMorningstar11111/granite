@@ -17,7 +17,7 @@ const Form = ({
   handleSubmit,
 }) => {
   const history = useHistory();
-  const userOptions = users.map(user => ({
+  const userOptions = users.map((user) => ({
     value: user.id,
     label: user.name,
   }));
@@ -41,7 +41,7 @@ const Form = ({
             label="Title"
             placeholder="Todo Title (Max 50 Characters Allowed)"
             value={title}
-            onChange={e => setTitle(e.target.value.slice(0, 50))}
+            onChange={(e) => setTitle(e.target.value.slice(0, 50))}
           />
           <div className="flex flex-col">
             <p className="text-sm font-medium leading-none text-gray-800">
@@ -53,7 +53,7 @@ const Form = ({
                 defaultValue={defaultOption}
                 menuPosition="fixed"
                 options={userOptions}
-                onChange={e => setUserId(e.value)}
+                onChange={(e) => setUserId(e.value)}
               />
             </div>
           </div>
