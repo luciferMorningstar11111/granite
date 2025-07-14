@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :load_task!
 
@@ -9,11 +11,11 @@ class CommentsController < ApplicationController
 
   private
 
-    def load_task!
-      @task = Task.find_by!(id: comment_params[:task_id])
-    end
+  def load_task!
+    @task = Task.find_by!(id: comment_params[:task_id])
+  end
 
-    def comment_params
-      params.require(:comment).permit(:content, :task_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:content, :task_id)
+  end
 end

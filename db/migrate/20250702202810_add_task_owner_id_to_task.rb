@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTaskOwnerIdToTask < ActiveRecord::Migration[7.1]
   def change
     add_column :tasks, :task_owner_id, :integer

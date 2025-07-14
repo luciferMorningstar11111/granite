@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def enable_test_coverage
   require 'simplecov'
   SimpleCov.start do
@@ -14,20 +16,19 @@ end
 
 enable_test_coverage if ENV['COVERAGE']
 
-
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
-      include FactoryBot::Syntax::Methods
+    include FactoryBot::Syntax::Methods
 
     # Run tests in parallel with specified workers
-      parallelize(workers: :number_of_processors) unless ENV['COVERAGE']
+    parallelize(workers: :number_of_processors) unless ENV['COVERAGE']
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-   # fixtures :all
+    # fixtures :all
 
     # Add more helper methods to be used by all tests here...
   end
@@ -35,8 +36,8 @@ end
 
 def headers(user, options = {})
   {
-    Accept: "application/json",
-    "Content_Type" => "application/json",
+    Accept: 'application/json',
+    'Content_Type' => 'application/json',
     'X-Auth-Token' => user.authentication_token,
     'X-Auth-Email' => user.email
   }.merge(options)
