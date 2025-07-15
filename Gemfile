@@ -75,5 +75,8 @@ group :development, :test do
   gem 'faker'
 end
 
-gem 'minitest-bisect'gem "pundit"
+gem 'minitest-bisect'
+gem "pundit"
 
+gem "sidekiq", "<7"
+gem 'redis', '< 5.0'

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
+  after_create :log_task_details
   # Constants
   MAX_TITLE_LENGTH = 125
   VALID_TITLE_REGEX = /\A.*[a-zA-Z0-9].*\z/i
@@ -68,5 +69,9 @@ class Task < ApplicationRecord
 
   def change_title
     self.title = 'Pay electricity & TV bill'
+  end
+
+  def log_task_details
+    TaskLoggerJob.perform_async(self.id)
   end
 end
