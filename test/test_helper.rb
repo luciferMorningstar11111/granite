@@ -46,3 +46,4 @@ end
 # parallelize_setup do
 #   puts "New process is forked"
 # end
+Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
