@@ -1,18 +1,26 @@
+<% branch_name = `git symbolic-ref HEAD 2>/dev/null`.chomp.sub('refs/heads/', '') %>
+<% repository_name = `git rev-parse --show-toplevel`.split('/').last.strip %>
+
 default: &default
   adapter: postgresql
-  host: 127.0.0.1
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV['PG_HOST'] %>
+  pool: 5
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
 
 development:
   <<: *default
-  database: granite_development
+  database: <%= "#{repository_name}_development" %>
 
 test:
   <<: *default
-  user: postgres
-  database: granite_test<%= ENV['CIRCLE_NODE_INDEX'] %>
+  database: <%= "#{repository_name}_test" %>
+
+staging:
+  <<: *default
+  database: <%= "#{repository_name}_staging" %>
 
 production:
   <<: *default
-  database: granite_production+
+  database: <%= "#{repository_name}_production" %>
