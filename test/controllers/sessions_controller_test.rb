@@ -21,10 +21,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_should_respond_with_not_found_error_if_user_is_not_present
-    non_existent_email = 'this_email_does_not_exist_in_db@example.email'
-    post session_path, params: { login: { email: non_existent_email, password: 'welcome' } }, as: :json
+    non_existent_email = "this_email_does_not_exist_in_db@example.email"
+    post session_path, params: { login: { email: non_existent_email, password: "welcome" } }, as: :json
     assert_response :not_found
     response_json = response.parsed_body
-    assert_equal "Couldn't find User", response_json['error']
+    assert_equal I18n.t("not_found", entity: "User"), response_json["error"]
   end
 end

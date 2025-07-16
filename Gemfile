@@ -78,5 +78,13 @@ end
 gem 'minitest-bisect'
 gem "pundit"
 
-gem "sidekiq", "<7"
+# Gemfile
+gem 'sidekiq', '~> 7.0'
+
 gem 'redis', '< 5.0'
+
+# For periodic sidekiq jobs
+gem "sidekiq-cron"
+
+# For opening mails in development env
+gem "letter_opener", :group => :development
