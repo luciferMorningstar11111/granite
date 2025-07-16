@@ -2,7 +2,7 @@ services:
   - type: web
     name: granite-oliver-smith
     runtime: ruby
-    repo: <repo-link>
+    repo: https://github.com/luciferMorningstar11111/granite.git
     branch: main
     plan: free
     envVars:
